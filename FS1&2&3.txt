@@ -1,0 +1,268 @@
+#Assignment 1 set A
+#Q1. Write a JavaScript program to demonstrate the use of let and const.
+let score = 10;
+score = 15; // Allowed
+const PI = 3.14;
+// PI = 3.15; // Error: Assignment to constant variable
+console.log(score, PI);
+#Q2. Write an arrow function to add two numbers.
+const add = (a, b) => a + b;
+console.log(add(5, 3));
+#Q3. Write an arrow function to find the square of a number.
+const square = n => n * n;
+console.log(square(4));
+#Q4.Write a JavaScript program using template literals to display a person’s name and age.
+const name = "Alice", age = 25;
+console.log(`My name is ${name} and I am ${age} years old.`);
+#Q5.Given an object person = { name: "John", age: 30 }, use destructuring to extract the values.
+const person = { name: "John", age: 30 };
+const { name, age } = person;
+console.log(name, age);
+#set B
+#Q1.Write a JavaScript program to demonstrate array de-structuring.
+const [first, second] = ["Red", "Blue", "Green"];
+console.log(first, second);
+#Q2.Write a JavaScript program to merge two arrays using the spread operator.
+const arr1 = [1, 2], arr2 = [3, 4];
+const merged = [...arr1, ...arr2];
+console.log(merged);
+#Q3.Write a JavaScript program to copy an array using the spread operator and modify
+the copied array.
+const original = [10, 20];
+const copy = [...original];
+copy.push(30);
+console.log(original, copy);
+#Q4. Write a JavaScript program to iterate an array using the for...of loop.
+const colors = ["Red", "Green", "Blue"];
+for (const color of colors) console.log(color);
+#Q5. Write a JavaScript program to demonstrate default parameters in a function.
+const greet = (user = "Guest") => `Hello, ${user}!`;
+console.log(greet()); // "Hello, Guest!"
+#set c
+#Q1.Write a JavaScript program to calculate the sum of multiple numbers using rest parameters.
+const sumAll = (...nums) => nums.reduce((s, n) => s + n, 0);
+console.log(sumAll(1, 2, 3, 4));
+#Q2.Write a JavaScript program to create a class Student with properties and a method to display details.
+class Student {
+constructor(name, id) { this.name = name; this.id = id; }
+display() { console.log(`Student: ${this.name}, ID: ${this.id}`); }
+}
+new Student("Sam", 101).display();
+#Q3.Write a JavaScript program to create a Car class and create two objects of the class.
+class Car {
+constructor(brand) { this.brand = brand; }
+}const car1 = new Car("Tesla"), car2 = new Car("BMW");
+console.log(car1.brand, car2.brand);
+#Q4.Write a JavaScript program to use Symbol as a unique key in an object.
+const idKey = Symbol("id");
+const user = { [idKey]: 1234, name: "Bob" };
+console.log(user[idKey]);
+#Q5.Write a JavaScript program to show that symbol properties do not appear in a for...in loop.
+const hidden = Symbol("hidden");
+const obj = { visible: "Hi", [hidden]: "Secret" };
+for (let key in obj) console.log(key); // Only logs "visible"
+#Assignment 2 set A
+#Q1.Demonstrate the use of rest parameters with a function that accepts any number of arguments.
+function sumEverything(...numbers) {
+return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sumEverything(1, 2, 3, 4, 5)); // Output: 15
+#Q2.Write a program to demonstrate the spread operator with arrays and objects.
+const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4]; // Spread into new array
+const person = { name: "Leo" };
+const updatedPerson = { ...person, age: 25 }; // Spread into new object
+console.log(arr2, updatedPerson);
+#Q3.Write a function that accepts a function as a parameter and executes it after 2 seconds.
+function runLater(callback) {
+setTimeout(callback, 2000);
+}
+runLater(() => console.log("Executed after 2 seconds"));
+#set B
+#Q1.Write a function that takes two numbers and returns their sum, ensuring the function is a
+pure function (i.e., no side effects).
+const pureSum = (a, b) => a + b;
+console.log(pureSum(10, 5));
+#Q2.Create a higher-order function that takes a function and an array as inputs, and applies the function to each element of the array.
+const processArray = (arr, fn) => arr.map(fn);
+console.log(processArray([1, 2, 3], x => x * 2)); // [2, 4, 6]
+#Q3.Write a curried function that multiplies three numbers. The function should be curried such that you can call it one number at a time.
+const curriedMultiply = a => b => c => a * b * c;
+console.log(curriedMultiply(2)(3)(4)); // Output: 24
+#Q4.Create a function that takes an array and an element and returns a new array with the element added, ensuring the original array is not mutated.
+const addItem = (arr, item) => [...arr, item];
+const original = [1, 2];
+console.log(addItem(original, 3)); // [1, 2, 3]
+#Q5.Write a function that returns a promise that resolves with a string "Success" after 1 second.
+const getSuccess = () => new Promise(resolve => setTimeout(() =>
+resolve("Success"), 1000));
+getSuccess().then(console.log);
+#Q6.Create an asynchronous function that fetches data from a mock API (simulated using setTimeout), and logs the result once it's fetched.
+async function fetchData() {
+const data = await new Promise(res => setTimeout(() => res({id: 1,
+name: "Data"}), 2000));
+console.log("Fetched:", data);
+}
+fetchData();
+#Q7.Write a function that takes a number and a callback function, applies the callback to the number, and returns the result.
+const applyCallback = (num, cb) => cb(num);
+console.log(applyCallback(5, n => n * 10)); // 50
+#Q8.Write a generator function that yields the first 3 numbers of the Fibonacci sequence.
+function* fib3() {
+let [a, b] = [0, 1];
+yield a; yield b; yield a + b;
+}
+console.log([...fib3()]); // [0, 1, 1]
+#Set C
+#Q1.Write a JavaScript program to demonstrate all operations of the Set object using a student example. The program should store student roll numbers, add new student entries, display the total number of students, check whether a particular student roll number is present, remove a student roll number, traverse all student records, display the stored student values, and finally remove all student data from the Set.
+const rolls = new Set([101, 102]);
+rolls.add(103); // Add entry
+console.log("Total:", rolls.size); // Total students
+console.log("Exists 102?", rolls.has(102)); // Check presence
+rolls.delete(101); // Remove entry
+rolls.forEach(r => console.log("Roll:", r)); // Traverse/Display values
+rolls.clear(); // Remove all
+#Q2.Write a JavaScript program to demonstrate all operations of the Map object using an employee example. The program should store employee IDs as keys and employee details as values, add new employee records, display the total number of employees, check whether a particular employee ID exists, retrieve employee details using the employee ID, remove an employee record, traverse and display all employee records, display all stored keys and values, and finally remove all employee data from the Map.
+const employees = new Map([[1, {name: "Alice"}]]);
+employees.set(2, {name: "Bob"}); // Add record
+console.log("Total:", employees.size); // Total count
+console.log("Has ID 1?", employees.has(1)); // Check ID
+console.log("Details ID 2:", employees.get(2)); // Retrieve
+employees.delete(1); // Remove record
+employees.forEach((val, key) => console.log(key, val)); // Traverse
+employees.clear(); // Remove all
+#Q3.Create a Car class with properties make, model, and year, and a method displayInfo() that returns the car's information.
+class Car {
+constructor(make, model, year) { Object.assign(this, {make, model,
+year}); }
+displayInfo() { return `${this.year} ${this.make} ${this.model}`; }
+}
+console.log(new Car("Toyota", "Camry", 2022).displayInfo());
+#Q4.Create a Shape class with a method area(), and extend it into a Rectangle class that overrides the area() method to calculate the area of a rectangle.
+class Shape { area() { return 0; } }
+class Rectangle extends Shape {
+constructor(w, h) { super(); this.w = w; this.h = h; }
+area() { return this.w * this.h; }
+}
+console.log(new Rectangle(5, 10).area()); // 50
+#Q5.Write a program to demonstrate the use of the super() keyword.
+class Parent { constructor(name) { this.name = name; } }
+class Child extends Parent {
+constructor(name, age) {
+super(name); // Calls Parent constructor
+this.age = age;
+}
+}
+const kid = new Child("Tim", 10);
+console.log(kid.name, kid.age);
+#Assignment 3 SET A
+#Install TypeScript: npm install -g typescript
+#Compile a file: tsc filename.ts (This creates a .js file)
+#Run the compiled file: node filename.js
+#Q1.Write a TypeScript program that declares a variable `name` and assigns it a string value. Also declare a variable `age` and assign it a number value. Finally print the values of name
+and age.
+let studentName: string = "Add";
+let age: number = 25;
+console.log(`Name: ${studentName}, Age: ${age}`);
+#Command: tsc q1.ts && node q1.js #aware of file names#
+#Q2.Write a TypeScript program that declares variables using let, const, and var. Then, describe how each declaration type behaves with respect to scoping and mutability.
+var x = 10;
+let y = 20;
+const z = 30;
+y = 25;
+console.log(x, y, z);
+Command: tsc q2.ts && node q2.js #aware of file names#
+#Q3.Write a TypeScript function that takes an array of numbers and returns only the even numbers.
+const getEvens = (arr: number[]): number[] => arr.filter(n => n % 2 === 0);
+console.log(getEvens([1, 2, 3, 4, 5, 6]));
+Command: tsc q3.ts && node q3.js #aware of file names#
+#Q4.Write a TypeScript program that demonstrates the use of a union type where a variable can hold either a string or a number.
+let value: string | number;
+value = "Success";
+console.log(value);
+value = 200;
+console.log(value);
+Command: tsc q4.ts && node q4.js #aware of file names#
+#Q5.Create an enum in TypeScript to represent different user roles (Admin, Editor, Viewer). Write a function that takes a role and prints a message based on the role.
+enum Role { Admin, Editor, Viewer }
+function checkRole(role: Role) {
+    if (role === Role.Admin) console.log("Welcome Admin");
+    else console.log("Welcome User");
+}
+checkRole(Role.Admin);
+Command: tsc q5.ts && node q5.js #aware of file names#
+#Set B
+#Q1.Create a TypeScript module that exports a function to calculate the area of a circle. Import and use this function in another file.
+// circle.ts
+export const area = (r: number) => Math.PI * r * r;
+// main.ts
+import { area } from './circle';
+console.log(area(5));
+Command: tsc circle.ts main.ts && node main.js #aware of file names#
+#Q2.Create a generic class Storage that can store and retrieve data of any type. Demonstrate its usage with number and string.
+class Storage<T> {
+    private item: T;
+    set(val: T) { this.item = val; }
+    get(): T { return this.item; }
+}
+let s = new Storage<string>();
+s.set("Data");
+console.log(s.get());
+Command: tsc q2b.ts && node q2b.js #aware of file names#
+#Q3.1)Write a TypeScript function that demonstrates the use of unknown type and safely performs operations using type assertions. 
+let input: unknown = "Hello";
+let str: string = input as string;
+console.log(str.toUpperCase());
+Command: tsc q3.1b.ts && node q3.1b.js #aware of file names#
+#Q3.2)Write a TypeScript function that takes a generic array and returns the first element of the array.
+function first<T>(arr: T[]): T {
+    return arr[0];
+}
+console.log(first([5, 10, 15]));
+Command: tsc q3.2b.ts && node q3.2b.js #aware of file names#
+#SET C
+#Q1.Write a TypeScript program to demonstrate the use of access modifiers (public, private, protected).
+class Base {
+    public a = 1;
+    private b = 2;
+    protected c = 3;
+}
+class Derived extends Base {
+    show() { console.log(this.a, this.c); }
+}
+new Derived().show();
+Command: tsc q1c.ts && node q1c.js #aware of file names#
+#Q2.Write a TypeScript program to handle errors using try, catch, and finally.
+try {
+    throw new Error("Failure");
+} catch (e: any) {
+    console.log(e.message);
+} finally {
+    console.log("Cleanup");
+}
+Command: tsc q2c.ts && node q2c.js #aware of file names#
+#Q3.Write a TypeScript program that uses an interface to define a student object and displays the student details.
+interface Student {
+    name: string;
+    id: number;
+}
+const s1: Student = { name: "Amit", id: 10 };
+console.log(s1.name, s1.id);
+Command: tsc q3c.ts && node q3c.js #aware of file names#
+#Q4.Write a TypeScript program to demonstrate readonly properties in an interface or class.
+interface Book {
+    readonly isbn: string;
+    title: string;
+}
+let myBook: Book = { isbn: "978-3", title: "TS Guide" };
+console.log(myBook.isbn);
+Command: tsc q4c.ts && node q4c.js #aware of file names#
+#Q5.Write a TypeScript program to demonstrate method overriding in a derived class.
+class Parent {
+    display() { console.log("Parent"); }
+}
+class Child extends Parent {
+    display() { console.log("Child"); }
+}
+new Child().display();
+Command: tsc q5c.ts && node q5c.js #aware of file names#
