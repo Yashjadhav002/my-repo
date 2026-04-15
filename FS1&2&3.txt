@@ -266,3 +266,15 @@ class Child extends Parent {
 }
 new Child().display();
 Command: tsc q5c.ts && node q5c.js #aware of file names#
+
+//{ for Assignment 4&5
+https://github.com/Atharva122003/welcomemsg.git
+https://github.com/Atharva122003/control.git
+https://github.com/Atharva122003/cal.git
+https://github.com/Atharva122003/login.git
+https://github.com/Atharva122003/mod.git
+https://github.com/Atharva122003/call.git
+https://github.com/Atharva122003/event.git
+https://github.com/Atharva122003/stream.git
+https://github.com/Atharva122003/web.git
+//}
